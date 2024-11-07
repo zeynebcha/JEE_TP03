@@ -7,7 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class MatriceServlet extends HttpServlet {
-    private Integer[][] matrice = new Integer[10][10]; // Matrice 10x10
+    private int[][] matrice = new int[10][10]; // Matrice 10x10
+    private boolean[][] initialise = new boolean[10][10]; //la cellule a été initialisé ou non
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -22,10 +23,10 @@ public class MatriceServlet extends HttpServlet {
             int x = Integer.parseInt(xParam);
             int y = Integer.parseInt(yParam);
 
-            if(matrice[x][y]==null) {
+            if(initialise[x][y]==false) {
                 out.println("La valeur de la cellule ("+x+";"+y+") n'a pas été initialisée.");
             }else{
-                out.println("Valeur de la cellule ("+xParam+";"+yParam+") => "+matrice[Integer.parseInt(xParam)][Integer.parseInt(yParam)]);
+                out.println("Valeur de la cellule ("+x+";"+y+") => "+matrice[x][y]);
             }
 
         }else {
@@ -41,11 +42,7 @@ public class MatriceServlet extends HttpServlet {
             for (int i = 0; i < 10; i++) {
                 out.println("<tr>");
                 for (int j = 0; j < 10; j++) {
-                    if(matrice[i][j]==null) {
-                        out.println("<td>"+" Ø "+"</td>");
-                    }else{
-                        out.println("<td>" + matrice[i][j] + "</td>");
-                    }
+                    out.println("<td>" + matrice[i][j] + "</td>");
                 }
                 out.println("</tr>");
             }
@@ -80,6 +77,7 @@ public class MatriceServlet extends HttpServlet {
                 // Vérifie que les coordonnées sont dans les limites de la matrice
                 if (x >= 0 && x < 10 && y >= 0 && y < 10) {
                     matrice[x][y] = newValue; // Met à jour la cellule spécifiée
+                    initialise[x][y] = true;
                 } else {
                     System.out.println("Erreur : Coordonnées en dehors des limites.");
                 }
@@ -90,7 +88,8 @@ public class MatriceServlet extends HttpServlet {
             // Si aucun paramètre n'est fourni, réinitialise la matrice à null
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    matrice[i][j] = null;
+                    matrice[i][j] = 0;
+                    initialise[i][j] = false;
                 }
             }
         }

@@ -6,6 +6,6 @@
   <title>Résultat</title>
 </head>
 <body>
-<h2><%= request.getAttribute("message") %></h2>
+<h2><%= request.getAttribute("message") != null ? request.getAttribute("message") : request.getAttribute("result") %></h2>
 </body>
 </html>

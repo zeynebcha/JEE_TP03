@@ -27,6 +27,6 @@ public class SolveEquationServlet extends HttpServlet {
         }
 
         request.setAttribute("result", result);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/resultat.jsp").forward(request, response);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/equationResultat.jsp").forward(request, response);
     }
 }
