@@ -1,4 +1,4 @@
-Rendu TP03 JEE par CHAABANE Zeineb, THOMAS Meven, PILLOT Pierren et GADELLE Ella 
+Rendu TP03 JEE par CHAABANE Zeineb, THOMAS Meven, PILLOT Pierre et GADELLE Ella 
 # JEE_TP03
 
 ## Aperçu du projet
